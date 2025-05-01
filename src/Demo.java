@@ -1,6 +1,6 @@
 package src;
 
-public class main {
+public class Demo {
     public static void main(String[] args) {
 
         InventoryManagementSystem ims = InventoryManagementSystem.getInstance();
@@ -23,16 +23,16 @@ public class main {
         ims.printInventory();
 
         // Create orders
-        Order order1 = consumer1.requestOrder(ims, material1, 2);
-        Order order2 = consumer2.requestOrder(ims, material3, 1);
-        Order order3 = consumer1.requestOrder(ims, material2, 3);
-        Order order4 = consumer2.requestOrder(ims, material4, 4);
+        Order order1 = ims.createOrder(consumer1, material1, 2);
+        Order order2 = ims.createOrder(consumer2, material3, 1);
+        Order order3 = ims.createOrder(consumer1, material2, 3);
+        Order order4 = ims.createOrder(consumer2, material4, 4);
 
-        order1.getSupplier().markDelivered(ims, order1);
-        order2.getSupplier().markDelivered(ims, order2);
-        order3.getSupplier().markDelivered(ims, order3);
-        consumer1.cancelOrder(ims, order3);
-        consumer2.cancelOrder(ims, order4);
+        ims.orderDeliveredBySupplier(order1.getSupplier(), order1);
+        ims.orderDeliveredBySupplier(order2.getSupplier(), order2);
+        ims.orderDeliveredBySupplier(order3.getSupplier(), order3);
+        ims.cancelOrder(consumer2, order4);
+        ims.cancelOrder(consumer1, order1);
 
         ims.orderDeliveredToConsumer(order1);
         ims.orderDeliveredToConsumer(order2);

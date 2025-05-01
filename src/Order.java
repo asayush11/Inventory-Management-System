@@ -1,12 +1,8 @@
 package src;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Order {
     private final String id;
     private final Material material;
-
     private final int quantity;
     private final Consumer consumer;
     private Supplier supplier;

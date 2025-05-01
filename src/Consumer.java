@@ -15,14 +15,6 @@ public class Consumer {
         this.id = id;
     }
 
-    public Order requestOrder(InventoryManagementSystem ims, Material material, int quantity){
-        return ims.createOrder(this, material, quantity);
-    }
-
-    public void cancelOrder(InventoryManagementSystem inventoryManagementSystem, Order order){
-        inventoryManagementSystem.cancelOrder(order);
-    }
-
     public String getName() {
         return name;
     }
