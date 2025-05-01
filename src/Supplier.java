@@ -2,6 +2,7 @@ package src;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 public class Supplier {
     private final String name;
@@ -35,16 +36,12 @@ public class Supplier {
         System.out.println("Balance updated for supplier: " + name + " to: " + this.balance);
     }
 
-    public void markDelivered(InventoryManagementSystem inventoryManagementSystem, Order order){
-        inventoryManagementSystem.orderDeliveredBySupplier(order);
-    }
-
     public Material addMaterial(String name, String description, double price){
         if(materials.containsKey(name)){
             System.out.println("Material already exists in supplier: " + name);
             return null;
         }
-        String materialID = "M" + (materials.size() + 1);
+        String materialID = "M" + UUID.randomUUID().toString().replace("-", "");
         Material material = new Material(materialID, name, description, price);
         materials.put(name, material);
         System.out.println("Material " + material.getName() + " added to supplier: " + this.name);
